@@ -1,0 +1,109 @@
+h1{
+    text-align: center;
+    font-family: "Helvetica", sans-serif;
+    font-size: 40px;
+    text-decoration: underline;
+}
+
+.titulo{
+    font-family: "Helvetica", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.precio{
+    font-family: "Helvetica", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: blue;
+}
+
+#container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px;
+}
+
+#carrito{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px;
+    padding: 10px;
+    border: solid 1px black;
+    border-radius: 8px;
+    background-color: antiquewhite;
+    height: 500px;
+    width: 250px;
+}
+
+.img{
+    height: 400px;
+    width: 200px;
+    border: solid 1px black;
+}
+
+.btn-add{
+    font-family: "Helvetica", sans-serif;
+    font-size: 16px;
+    background-color: white;
+    padding: 8px;
+    border-radius: 8px;
+    color: black;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.btn-add:hover{
+        background-color: black;
+        color: white;
+}
+
+#btn-carrito{
+    text-align: center;
+}
+
+.btn-mostrar{
+    font-family: "Helvetica", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: black;
+    padding: 12px 24px;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.btn-finalizar{
+    font-family: "Helvetica", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: black;
+    padding: 12px 24px;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.btn-finalizar:hover{
+        background-color: white;
+        color: black;
+}
