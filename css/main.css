@@ -1,3 +1,60 @@
+#navBar{
+    margin-bottom: 50px;
+}
+
+#logo{
+    text-align: center;
+    background-color: antiquewhite;
+    margin-bottom: 10px;
+}
+
+#navBarCart{
+    text-align: right;
+    margin-right: 25%;
+}
+
+#navBarCart a{
+    text-decoration: none;
+    color: blue;
+}
+
+footer {
+    height: 100px;
+    width: 100%;
+    background-color: black;
+}
+
+footer hr{
+    width: 40%;
+    border-color: rgb(95, 0, 0);
+    background-color: rgb(95, 0, 0);
+    height: 1px;
+    margin: auto;
+    text-align: center;
+    margin-top: 12px;
+    margin-bottom: 8px;   
+}
+    
+footer p{
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 12px;
+}
+
+footer .icons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+}
+ 
+footer .icons a{
+    padding: 0px 12px;
+    text-decoration: none;
+    color: white;
+}
+
 h1{
     text-align: center;
     font-family: "Helvetica", sans-serif;
