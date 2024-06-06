@@ -1,47 +1,44 @@
 const container = document.getElementById("container");
-const btnCarrito = document.getElementById("btn-carrito");
-const divCarrito = document.getElementById("carrito");
-
-const botonMostrarOcultar = document.createElement("button");
-botonMostrarOcultar.className = "btn-mostrar"
-let mostrar = false;
-botonMostrarOcultar.onclick = () => mostrarOcultar(mostrar);
-
-btnCarrito.appendChild(botonMostrarOcultar);
+const carritoCount = document.getElementById("carrito-count");
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-function actualizarBotonCarrito() {
+function actualizarContadorCarrito() {
     if (carrito.length === 0) {
-        botonMostrarOcultar.innerText = "CARRITO DE COMPRAS VACIO";
-        botonMostrarOcultar.disabled = true;
+        carritoCount.innerText = "(vacío)";
     } else {
-        botonMostrarOcultar.innerText = mostrar ? "OCULTAR CARRITO" : "MOSTRAR CARRITO";
-        botonMostrarOcultar.disabled = false;
+        carritoCount.innerText = `(${carrito.length})`;
     }
 }
 
 function agregarCarrito(id) {
     const mangaAgregar = productos.find(el => el.id === id);
     if (carrito.some(element => element.id === mangaAgregar.id)) {
-        alert("Este producto ya se encuentra en su carrito de compras.");
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            text: "YA POSEE UNA COPIA DE ESTE PRODUCTO EN SU CARRITO",
+            showConfirmButton: false,
+            timer: 1500});
     } else {
         carrito.push(mangaAgregar);
-        alert("Producto agregado a su carrito de compras con exito!");
+        Swal.fire({
+            title: "Producto agregado al carrito!",
+            text: "¿Desea ir a su carrito de compras?",
+            icon: "success",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, ir al carrito.",
+            cancelButtonText: "No, seguir comprando."
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "./pages/cart.html";
+            }
+        }) 
         localStorage.setItem("carrito", JSON.stringify(carrito));
-        mostrar = false;
-        actualizarBotonCarrito();
+        actualizarContadorCarrito();
     }
-}
-
-function quitarCarrito(id) {
-    divCarrito.innerHTML = "";
-    let nuevoCarrito = carrito.filter(el => el.id !== id);
-    localStorage.setItem("carrito", JSON.stringify(nuevoCarrito));
-    carrito = nuevoCarrito;
-    carrito.forEach(el => createCard(el, "carrito"));
-    agregarBotonFinalizar();
-    actualizarBotonCarrito();
 }
 
 function createCard(manga, contenedor) {
@@ -62,13 +59,9 @@ function createCard(manga, contenedor) {
     precio.className = "precio";
 
     const btnAdd = document.createElement("button");
-    btnAdd.innerText = contenedor === "container" ? "Agregar" : "Quitar";
+    btnAdd.innerText = "Agregar";
     btnAdd.className = "btn-add";
-    if (contenedor === "container") {
-        btnAdd.onclick = () => agregarCarrito(manga.id);
-    } else {
-        btnAdd.onclick = () => quitarCarrito(manga.id);
-    }
+    btnAdd.onclick = () => agregarCarrito(manga.id);
 
     card.appendChild(titulo);
     card.appendChild(imagen);
@@ -79,42 +72,5 @@ function createCard(manga, contenedor) {
     nuevoContenedor.appendChild(card);
 }
 
-function mostrarOcultar(estado) {
-    if (estado) {
-        mostrar = false;
-        divCarrito.innerHTML = "";
-    } else {
-        mostrar = true;
-        divCarrito.innerHTML = "";
-        carrito.forEach(el => createCard(el, "carrito"));
-        agregarBotonFinalizar();
-    }
-    actualizarBotonCarrito();
-}
-
-function agregarBotonFinalizar() {
-    if (carrito.length > 0) {
-        const botonFinalizar = document.createElement("button");
-        botonFinalizar.innerText = "FINALIZAR COMPRA";
-        botonFinalizar.className = "btn-finalizar";
-        botonFinalizar.onclick = finalizarCompra;
-        divCarrito.appendChild(botonFinalizar);
-    }
-}
-
-function finalizarCompra() {
-    const total = carrito.reduce((acc, item) => acc + item.precio, 0);
-    const confirmar = confirm(`El monto total de tu compra es de $${total}. ¿Desea confirmar la compra?`);
-    if (confirmar) {
-        alert("Gracias por su compra! - ahora será redirigido al proveedor de pago. Hasta Luego!");
-        carrito = [];
-        localStorage.setItem("carrito", JSON.stringify(carrito));
-        divCarrito.innerHTML = "";
-        agregarBotonFinalizar();
-        actualizarBotonCarrito();
-    }
-}
-
 productos.forEach(el => createCard(el, "container"));
-carrito.forEach(el => createCard(el, "carrito"));
-actualizarBotonCarrito();
+actualizarContadorCarrito();
