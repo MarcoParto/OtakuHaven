@@ -82,6 +82,7 @@ function crearBotonesFiltro() {
     tipos.forEach(tipo => {
         const button = document.createElement("button");
         button.innerText = tipo.charAt(0).toUpperCase() + tipo.slice(1);
+        button.className = "btn-filter";
         button.onclick = () => mostrarProductos(tipo);
         filterButtonsContainer.appendChild(button);
     });

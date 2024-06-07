@@ -82,5 +82,61 @@
         "precio": 30000,
         "tipo": "comic",
         "imagen": "./resources/images/watchmen.jpg"
+    },
+    {
+        "id": 13,
+        "nombre": "Avengers 01",
+        "precio": 55000,
+        "tipo": "comic",
+        "imagen": "./resources/images/avengers-01.jpg"
+    },
+    {
+        "id": 14,
+        "nombre": "Fantastic Four 01",
+        "precio": 25000,
+        "tipo": "comic",
+        "imagen": "./resources/images/fantastic-four-01.jpg"
+    },
+    {
+        "id": 15,
+        "nombre": "DareDevil 01",
+        "precio": 20000,
+        "tipo": "comic",
+        "imagen": "./resources/images/daredevil-01.jpg"
+    },
+    {
+        "id": 16,
+        "nombre": "One Piece 01",
+        "precio": 8000,
+        "tipo": "manga",
+        "imagen": "./resources/images/one-piece-01.jpg"
+    },
+    {
+        "id": 17,
+        "nombre": "Naruto 01",
+        "precio": 8000,
+        "tipo": "manga",
+        "imagen": "./resources/images/naruto-01.jpg"
+    },
+    {
+        "id": 18,
+        "nombre": "Dragon Ball Super 01",
+        "precio": 8000,
+        "tipo": "manga",
+        "imagen": "./resources/images/dragon-ball-super-01.jpg"
+    },
+    {
+        "id": 19,
+        "nombre": "Vinland Saga 01",
+        "precio": 12000,
+        "tipo": "manga",
+        "imagen": "./resources/images/vinland-saga-01.jpg"
+    },
+    {
+        "id": 20,
+        "nombre": "Drifting Dragons 01",
+        "precio": 15000,
+        "tipo": "manga",
+        "imagen": "./resources/images/drifting-dragons-01.jpg"
     }
 ]

@@ -5,7 +5,7 @@ let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 function actualizarTotal() {
     const total = carrito.reduce((acc, item) => acc + item.precio, 0);
-    totalContainer.innerText = `Total: $${total}`;
+    totalContainer.innerText = `TOTAL: $${total}`;
 }
 
 function quitarCarrito(id) {

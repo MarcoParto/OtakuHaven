@@ -62,6 +62,30 @@ h1{
     text-decoration: underline;
 }
 
+#filter-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btn-filter{
+    margin: 0px 10px;
+    font-family: "Helvetica", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    color: black;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.btn-filter:hover{
+        background-color: black;
+        color: white;
+}
+
 .titulo{
     font-family: "Helvetica", sans-serif;
     font-size: 18px;
@@ -136,16 +160,25 @@ h1{
     text-align: center;
 }
 
-.btn-mostrar{
+#btn-return{
+    text-align: right;
+    margin-right: 25%;
+}
+
+.btn-return{
     font-family: "Helvetica", sans-serif;
     font-size: 20px;
-    font-weight: 600;
-    background-color: black;
+    background-color: white;
     padding: 12px 24px;
     border-radius: 8px;
-    color: white;
+    color: black;
     text-decoration: none;
     width: fit-content;
+}
+
+.btn-return:hover{
+    background-color: black;
+    color: white;
 }
 
 .btn-finalizar{
@@ -163,4 +196,14 @@ h1{
 .btn-finalizar:hover{
         background-color: white;
         color: black;
+}
+
+#total-container{
+    text-align: right;
+    margin-right: 25%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: "Helvetica", sans-serif;
+    font-size: 32px;
+    font-weight: 600;
 }
