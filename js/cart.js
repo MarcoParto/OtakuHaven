@@ -1,18 +1,17 @@
 const divCarrito = document.getElementById("carrito");
+const totalContainer = document.getElementById("total-container");
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 function actualizarTotal() {
-    const totalContainer = document.getElementById("total-container");
     const total = carrito.reduce((acc, item) => acc + item.precio, 0);
     totalContainer.innerText = `Total: $${total}`;
 }
 
 function quitarCarrito(id) {
     divCarrito.innerHTML = "";
-    let nuevoCarrito = carrito.filter(el => el.id !== id);
-    localStorage.setItem("carrito", JSON.stringify(nuevoCarrito));
-    carrito = nuevoCarrito;
+    carrito = carrito.filter(el => el.id !== id);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
     carrito.forEach(el => createCard(el, "carrito"));
     agregarBotonFinalizar();
     actualizarTotal();

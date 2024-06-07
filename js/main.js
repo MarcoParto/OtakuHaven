@@ -1,15 +1,12 @@
 const container = document.getElementById("container");
 const carritoCount = document.getElementById("carrito-count");
+const filterButtonsContainer = document.getElementById("filter-buttons");
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 let productos = [];
 
 function actualizarContadorCarrito() {
-    if (carrito.length === 0) {
-        carritoCount.innerText = "(vacío)";
-    } else {
-        carritoCount.innerText = `(${carrito.length})`;
-    }
+    carritoCount.innerText = carrito.length === 0 ? "(vacío)" : `(${carrito.length})`;
 }
 
 function agregarCarrito(id) {
@@ -74,11 +71,28 @@ function createCard(manga, contenedor) {
     nuevoContenedor.appendChild(card);
 }
 
+function mostrarProductos(tipo) {
+    container.innerHTML = "";
+    const productosFiltrados = tipo === "todos" ? productos : productos.filter(producto => producto.tipo === tipo);
+    productosFiltrados.forEach(el => createCard(el, "container"));
+}
+
+function crearBotonesFiltro() {
+    const tipos = ["todos", "manga", "comic"];
+    tipos.forEach(tipo => {
+        const button = document.createElement("button");
+        button.innerText = tipo.charAt(0).toUpperCase() + tipo.slice(1);
+        button.onclick = () => mostrarProductos(tipo);
+        filterButtonsContainer.appendChild(button);
+    });
+}
+
 fetch("./js/data.json")
-.then(response => response.json())
-.then(data => {
-    productos = data;
-    productos.forEach(el => createCard(el, "container"));
-})
+    .then(response => response.json())
+    .then(data => {
+        productos = data;
+        crearBotonesFiltro();
+        mostrarProductos("todos");
+    });
 
 actualizarContadorCarrito();
