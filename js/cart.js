@@ -2,6 +2,12 @@ const divCarrito = document.getElementById("carrito");
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
+function actualizarTotal() {
+    const totalContainer = document.getElementById("total-container");
+    const total = carrito.reduce((acc, item) => acc + item.precio, 0);
+    totalContainer.innerText = `Total: $${total}`;
+}
+
 function quitarCarrito(id) {
     divCarrito.innerHTML = "";
     let nuevoCarrito = carrito.filter(el => el.id !== id);
@@ -9,6 +15,7 @@ function quitarCarrito(id) {
     carrito = nuevoCarrito;
     carrito.forEach(el => createCard(el, "carrito"));
     agregarBotonFinalizar();
+    actualizarTotal();
 }
 
 function createCard(manga, contenedor) {
@@ -61,8 +68,10 @@ function finalizarCompra() {
         localStorage.setItem("carrito", JSON.stringify(carrito));
         divCarrito.innerHTML = "";
         agregarBotonFinalizar();
+        actualizarTotal();
     }
 }
 
 carrito.forEach(el => createCard(el, "carrito"));
 agregarBotonFinalizar();
+actualizarTotal();

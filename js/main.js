@@ -2,6 +2,7 @@ const container = document.getElementById("container");
 const carritoCount = document.getElementById("carrito-count");
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+let productos = [];
 
 function actualizarContadorCarrito() {
     if (carrito.length === 0) {
@@ -21,6 +22,7 @@ function agregarCarrito(id) {
             showConfirmButton: false,
             timer: 1500});
     } else {
+        mangaAgregar.imagen = `.${mangaAgregar.imagen}`;
         carrito.push(mangaAgregar);
         Swal.fire({
             title: "Producto agregado al carrito!",
@@ -72,5 +74,11 @@ function createCard(manga, contenedor) {
     nuevoContenedor.appendChild(card);
 }
 
-productos.forEach(el => createCard(el, "container"));
+fetch("./js/data.json")
+.then(response => response.json())
+.then(data => {
+    productos = data;
+    productos.forEach(el => createCard(el, "container"));
+})
+
 actualizarContadorCarrito();
