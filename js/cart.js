@@ -7,6 +7,7 @@ let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 function mostrarCarrito() {
     divCarrito.innerHTML = "";
+    divFinalizar.innerHTML = "";
     if (carrito.length === 0) {
         mostrarCarritoVacio();
     } else {
@@ -73,6 +74,7 @@ function createCard(manga, contenedor) {
 }
 
 function agregarBotonFinalizar() {
+    divFinalizar.innerHTML = "";
     if (carrito.length > 0) {
         const botonFinalizar = document.createElement("button");
         botonFinalizar.innerText = "Finalizar Compra";
@@ -105,10 +107,7 @@ function finalizarCompra() {
             setTimeout(() => {
                 carrito = [];
                 localStorage.setItem("carrito", JSON.stringify(carrito));
-                divCarrito.innerHTML = "";
-                agregarBotonFinalizar();
                 mostrarCarrito();
-                actualizarTotal();
             }, 3000);
         }
     }) 
