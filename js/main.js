@@ -1,12 +1,12 @@
 const container = document.getElementById("container");
-const carritoCount = document.getElementById("carrito-count");
+const cartCount = document.getElementById("cart-count");
 const filterButtonsContainer = document.getElementById("filter-buttons");
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 let productos = [];
 
 function actualizarContadorCarrito() {
-    carritoCount.innerText = carrito.length === 0 ? "(vacío)" : `(${carrito.length})`;
+    cartCount.innerText = carrito.length === 0 ? "(vacío)" : `(${carrito.length})`;
 }
 
 function agregarCarrito(id) {
@@ -81,7 +81,7 @@ function crearBotonesFiltro() {
     const tipos = ["todos", "manga", "comic"];
     tipos.forEach(tipo => {
         const button = document.createElement("button");
-        button.innerText = tipo.charAt(0).toUpperCase() + tipo.slice(1);
+        button.innerText = tipo.toUpperCase();
         button.className = "btn-filter";
         button.onclick = () => mostrarProductos(tipo);
         filterButtonsContainer.appendChild(button);

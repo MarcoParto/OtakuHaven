@@ -1,4 +1,5 @@
 const divCarrito = document.getElementById("carrito");
+const divFinalizar =document.getElementById("finalizar")
 const totalContainer = document.getElementById("total-container");
 const carritoVacioImg = "../resources/images/carrito-vacio.png";
 
@@ -77,7 +78,7 @@ function agregarBotonFinalizar() {
         botonFinalizar.innerText = "Finalizar Compra";
         botonFinalizar.className = "btn-finalizar";
         botonFinalizar.onclick = finalizarCompra;
-        divCarrito.appendChild(botonFinalizar);
+        divFinalizar.appendChild(botonFinalizar);
     }
 }
 
@@ -97,17 +98,18 @@ function finalizarCompra() {
             Swal.fire({
                 position: "top-mid",
                 icon: "success",
-                title: "Gracias por su compra! - será redirigido al proveedor de pago. Hasta Luego!",
+                title: "Gracias por su compra! - Será redirigido al proveedor de pago. Hasta Luego!",
                 showConfirmButton: false,
-                timer: 2500
+                timer: 3000
             });
             setTimeout(() => {
                 carrito = [];
                 localStorage.setItem("carrito", JSON.stringify(carrito));
                 divCarrito.innerHTML = "";
                 agregarBotonFinalizar();
+                mostrarCarrito();
                 actualizarTotal();
-            }, 2500);
+            }, 3000);
         }
     }) 
 }

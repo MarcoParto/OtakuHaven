@@ -187,6 +187,11 @@ h1{
     color: white;
 }
 
+#finalizar{
+    text-align: center;
+    margin-top: 50px;
+}
+
 .btn-finalizar{
     font-family: "Helvetica", sans-serif;
     font-size: 20px;
@@ -278,11 +283,7 @@ h1{
         font-size: 16px;
         padding: 8px 16px;
     }
-    
-    .btn-finalizar{
-        margin-top: 50px;
-    }
-    
+        
     #total-container{
         text-align: center;
         margin-right: unset;
