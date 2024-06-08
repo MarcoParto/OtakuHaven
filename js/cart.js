@@ -1,7 +1,33 @@
 const divCarrito = document.getElementById("carrito");
 const totalContainer = document.getElementById("total-container");
+const carritoVacioImg = "../resources/images/carrito-vacio.png";
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+function mostrarCarrito() {
+    divCarrito.innerHTML = "";
+    if (carrito.length === 0) {
+        mostrarCarritoVacio();
+    } else {
+        carrito.forEach(el => createCard(el, "carrito"));
+        agregarBotonFinalizar();
+    }
+    actualizarTotal();
+}
+
+function mostrarCarritoVacio() {
+    const mensaje = document.createElement("p");
+    mensaje.innerText = "Tu Carrito de compras esta vacio!";
+    mensaje.className = "msg-vacio"
+
+    const imagen = document.createElement("img");
+    imagen.src = carritoVacioImg;
+    imagen.alt = "Carrito vacío";
+    imagen.className = "img-vacio";
+
+    divCarrito.appendChild(imagen);
+    divCarrito.appendChild(mensaje);
+}
 
 function actualizarTotal() {
     const total = carrito.reduce((acc, item) => acc + item.precio, 0);
@@ -9,12 +35,9 @@ function actualizarTotal() {
 }
 
 function quitarCarrito(id) {
-    divCarrito.innerHTML = "";
     carrito = carrito.filter(el => el.id !== id);
     localStorage.setItem("carrito", JSON.stringify(carrito));
-    carrito.forEach(el => createCard(el, "carrito"));
-    agregarBotonFinalizar();
-    actualizarTotal();
+    mostrarCarrito();
 }
 
 function createCard(manga, contenedor) {
@@ -51,7 +74,7 @@ function createCard(manga, contenedor) {
 function agregarBotonFinalizar() {
     if (carrito.length > 0) {
         const botonFinalizar = document.createElement("button");
-        botonFinalizar.innerText = "FINALIZAR COMPRA";
+        botonFinalizar.innerText = "Finalizar Compra";
         botonFinalizar.className = "btn-finalizar";
         botonFinalizar.onclick = finalizarCompra;
         divCarrito.appendChild(botonFinalizar);
@@ -60,17 +83,33 @@ function agregarBotonFinalizar() {
 
 function finalizarCompra() {
     const total = carrito.reduce((acc, item) => acc + item.precio, 0);
-    const confirmar = confirm(`El monto total de tu compra es de $${total}. ¿Desea confirmar la compra?`);
-    if (confirmar) {
-        alert("Gracias por su compra! - ahora será redirigido al proveedor de pago. Hasta Luego!");
-        carrito = [];
-        localStorage.setItem("carrito", JSON.stringify(carrito));
-        divCarrito.innerHTML = "";
-        agregarBotonFinalizar();
-        actualizarTotal();
-    }
+    Swal.fire({
+        title: `El monto total de tu compra es de $${total}.`,
+        text: "¿Desea confirmar la compra?",
+        icon: "info",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "SI",
+        cancelButtonText: "NO"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                position: "top-mid",
+                icon: "success",
+                title: "Gracias por su compra! - será redirigido al proveedor de pago. Hasta Luego!",
+                showConfirmButton: false,
+                timer: 2500
+            });
+            setTimeout(() => {
+                carrito = [];
+                localStorage.setItem("carrito", JSON.stringify(carrito));
+                divCarrito.innerHTML = "";
+                agregarBotonFinalizar();
+                actualizarTotal();
+            }, 2500);
+        }
+    }) 
 }
 
-carrito.forEach(el => createCard(el, "carrito"));
-agregarBotonFinalizar();
-actualizarTotal();
+mostrarCarrito();

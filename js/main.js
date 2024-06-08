@@ -15,20 +15,20 @@ function agregarCarrito(id) {
         Swal.fire({
             position: "top-end",
             icon: "error",
-            text: "YA POSEE UNA COPIA DE ESTE PRODUCTO EN SU CARRITO",
+            text: "YA SE ENCUENTRA EN SU CARRITO",
             showConfirmButton: false,
             timer: 1500});
     } else {
         mangaAgregar.imagen = `.${mangaAgregar.imagen}`;
         carrito.push(mangaAgregar);
         Swal.fire({
-            title: "Producto agregado al carrito!",
+            title: "Agregado al carrito!",
             text: "¿Desea ir a su carrito de compras?",
             icon: "success",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Si, ir al carrito.",
+            confirmButtonText: "Si.",
             cancelButtonText: "No, seguir comprando."
         }).then((result) => {
             if (result.isConfirmed) {

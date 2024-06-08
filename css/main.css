@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 #navBar{
     margin-bottom: 50px;
 }
@@ -21,7 +26,7 @@
 footer {
     height: 100px;
     width: 100%;
-    background-color: black;
+    background-color: antiquewhite;
 }
 
 footer hr{
@@ -36,7 +41,7 @@ footer hr{
 }
     
 footer p{
-    color: rgb(255, 255, 255);
+    color: black;
     text-align: center;
     font-size: 12px;
 }
@@ -52,7 +57,7 @@ footer .icons{
 footer .icons a{
     padding: 0px 12px;
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 h1{
@@ -205,5 +210,16 @@ h1{
     margin-bottom: 50px;
     font-family: "Helvetica", sans-serif;
     font-size: 32px;
+    font-weight: 600;
+}
+
+.img-vacio{
+    width: 500px;
+    height: 500px;
+}
+
+.msg-vacio{
+    font-family: "Helvetica", sans-serif;
+    font-size: 24px;
     font-weight: 600;
 }
