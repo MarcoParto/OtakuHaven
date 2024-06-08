@@ -20,7 +20,7 @@
 
 #navBarCart a{
     text-decoration: none;
-    color: blue;
+    color: black;
 }
 
 footer {
@@ -41,6 +41,8 @@ footer hr{
 }
     
 footer p{
+    font-family: "Helvetica", sans-serif;
+    font-weight: 600;
     color: black;
     text-align: center;
     font-size: 12px;
@@ -65,6 +67,7 @@ h1{
     font-family: "Helvetica", sans-serif;
     font-size: 40px;
     text-decoration: underline;
+    margin-bottom: 20px;
 }
 
 #filter-buttons{
@@ -79,7 +82,7 @@ h1{
     font-size: 20px;
     font-weight: 600;
     background-color: white;
-    padding: 12px 24px;
+    padding: 10px 20px;
     border-radius: 8px;
     color: black;
     text-decoration: none;
@@ -93,15 +96,17 @@ h1{
 
 .titulo{
     font-family: "Helvetica", sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
+    margin-bottom: 12px;
 }
 
 .precio{
     font-family: "Helvetica", sans-serif;
     font-size: 16px;
     font-weight: 600;
-    color: blue;
+    color: darkblue;
+    margin: 12px 0px;
 }
 
 #container{
@@ -161,10 +166,6 @@ h1{
         color: white;
 }
 
-#btn-carrito{
-    text-align: center;
-}
-
 #btn-return{
     text-align: right;
     margin-right: 25%;
@@ -174,7 +175,7 @@ h1{
     font-family: "Helvetica", sans-serif;
     font-size: 20px;
     background-color: white;
-    padding: 12px 24px;
+    padding: 10px 20px;
     border-radius: 8px;
     color: black;
     text-decoration: none;
@@ -191,7 +192,7 @@ h1{
     font-size: 20px;
     font-weight: 600;
     background-color: black;
-    padding: 12px 24px;
+    padding: 10px 20px;
     border-radius: 8px;
     color: white;
     text-decoration: none;
@@ -222,4 +223,119 @@ h1{
     font-family: "Helvetica", sans-serif;
     font-size: 24px;
     font-weight: 600;
+}
+
+
+/* RESPONSIVE MOBILE */
+@media (max-width:480px){
+
+    #navBar{
+        margin-bottom: 30px;
+    }
+    
+    #img-logo{
+        height: 150px;
+    }
+    
+    #navBarCart{
+        text-align: center;
+        margin-right: unset;
+    }
+    
+    h1{
+        font-size: 20px;
+    }
+    
+    .btn-filter{
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+        
+    #container{
+        flex-direction: column;
+    }
+    
+    #carrito{
+        flex-direction: column;
+    }
+    
+    .card{
+        height: 400px;
+        width: 200px;
+    }
+    
+    .img{
+        height: 350px;
+        width: 175px;
+    }
+
+    #btn-return{
+        text-align: center;
+        margin-right: unset;
+    }
+    
+    .btn-return{
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+    
+    .btn-finalizar{
+        margin-top: 50px;
+    }
+    
+    #total-container{
+        text-align: center;
+        margin-right: unset;
+        font-size: 24px;
+    }
+    
+    .img-vacio{
+        width: 350px;
+        height: 350px;
+        margin: 60px 0px 30px 0px;
+    }
+    
+    .msg-vacio{
+        font-size: 20px;
+    }
+    
+    footer hr{
+        width: 60%;
+    }
+}
+
+/* RESPONSIVE TABLET */
+@media (min-width: 481px) and (max-width: 1023px){
+
+    #navBar{
+        margin-bottom: 50px;
+    }
+    
+    #navBarCart{
+        text-align: center;
+        margin-right: unset;
+    }
+    
+    h1{
+        font-size: 36px;
+    }
+
+    #btn-return{
+        text-align: center;
+        margin-right: unset;
+    }
+    
+    #total-container{
+        text-align: center;
+        margin-right: unset;
+        font-size: 36px;
+    }
+    
+    .img-vacio{
+        margin: 60px 0px 30px 0px;
+    }
+    
+    .msg-vacio{
+        font-size: 32px;
+    }
 }
